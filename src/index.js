@@ -21,7 +21,7 @@ const checkToken = async (index = 0) => {
     return;
   }
 
-  if (!data?.token) {
+  if (!data?.cube_token) {
     const cube_token = await login();
     await Key.updateOne({ _id: data._id }, { cube_token });
     return;
@@ -587,7 +587,7 @@ app.get('/get-key18', async (req, res) => {
 
 app.get('/get-key19', async (req, res) => {
   try {
-       await checkToken(19);
+    await checkToken(19);
 
     const key = (await Key.find())[19];
     const promoCode = await mainPromoCode(key?.cube_token);
@@ -615,7 +615,7 @@ app.get('/get-key19', async (req, res) => {
 
 app.get('/get-key20', async (req, res) => {
   try {
-       await checkToken(20);
+    await checkToken(20);
 
     const key = (await Key.find())[20];
     const promoCode = await mainPromoCode(key?.cube_token);
@@ -643,7 +643,7 @@ app.get('/get-key20', async (req, res) => {
 
 app.get('/get-key21', async (req, res) => {
   try {
-       await checkToken(21);
+    await checkToken(21);
 
     const key = (await Key.find())[21];
     const promoCode = await mainPromoCode(key?.cube_token);
@@ -671,7 +671,7 @@ app.get('/get-key21', async (req, res) => {
 
 app.get('/get-key22', async (req, res) => {
   try {
-       await checkToken(22);
+    await checkToken(22);
 
     const key = (await Key.find())[22];
     const promoCode = await mainPromoCode(key?.cube_token);
@@ -699,7 +699,7 @@ app.get('/get-key22', async (req, res) => {
 
 app.get('/get-key23', async (req, res) => {
   try {
-       await checkToken(23);
+    await checkToken(23);
 
     const key = (await Key.find())[23];
     const promoCode = await mainPromoCode(key?.cube_token);
@@ -725,10 +725,9 @@ app.get('/get-key23', async (req, res) => {
   }
 });
 
-
 app.get('/get-key24', async (req, res) => {
   try {
-       await checkToken(24);
+    await checkToken(24);
 
     const key = (await Key.find())[24];
     const promoCode = await mainPromoCode(key?.cube_token);
