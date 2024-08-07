@@ -10,24 +10,28 @@ const generateRandomClientId = () => {
 };
 
 const login = async () => {
-  const headers = {
-    Accept: '*/*',
-    'Content-Type': 'application/json',
-    'Accept-Charset': 'utf-8',
-    Host: 'api.gamepromo.io',
-    'User-Agent': 'Thunder Client (https://www.thunderclient.com)',
-  };
+  try {
+    const headers = {
+      Accept: '*/*',
+      'Content-Type': 'application/json',
+      'Accept-Charset': 'utf-8',
+      Host: 'api.gamepromo.io',
+      'User-Agent': 'Thunder Client (https://www.thunderclient.com)',
+    };
 
-  const { data } = await axios.post(
-    'https://api.gamepromo.io/promo/login-client',
-    {
-      appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
-      clientId: generateRandomClientId(),
-      clientOrigin: 'deviceid',
-    },
-    { headers },
-  );
-  return data.clientToken;
+    const { data } = await axios.post(
+      'https://api.gamepromo.io/promo/login-client',
+      {
+        appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
+        clientId: generateRandomClientId(),
+        clientOrigin: 'deviceid',
+      },
+      { headers },
+    );
+    return data.clientToken;
+  } catch (error) {
+    console.error('login error', error);
+  }
 };
 
 const getEvent = async (headers) => {
@@ -43,7 +47,7 @@ const getEvent = async (headers) => {
 
     return response.data;
   } catch (error) {
-    console.log(error, 'err');
+    console.log('event error', error);
   }
 };
 
