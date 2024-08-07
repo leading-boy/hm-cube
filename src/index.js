@@ -85,7 +85,7 @@ app.get('/get-key0', async (req, res) => {
   }
 });
 
-const loopArr = [0, 1, 2, 3, 4, 5, 6, 7];
+const loopArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 
 let currentIndexObj = {
   index1: 0,
