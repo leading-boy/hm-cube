@@ -643,10 +643,7 @@ app.get('/get-key24', async (req, res) => {
   }
 });
 
-if (process.env.NODE_ENV === 'development') {
-  app.listen(5000, () => {
-    console.log('Server run');
-  });
-}
-
-exports.default = app;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('Server run');
+});
