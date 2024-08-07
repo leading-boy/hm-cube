@@ -8,13 +8,7 @@ const keySchema = new mongoose.Schema(
     cube: {
       type: mongoose.SchemaTypes.Array,
     },
-    army: {
-      type: mongoose.SchemaTypes.Array,
-    },
-    miner: {
-      type: mongoose.SchemaTypes.Array,
-    },
-    token: {
+    cube_token: {
       type: mongoose.SchemaTypes.String,
     },
     isRefreshToken: {

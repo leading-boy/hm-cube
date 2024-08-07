@@ -16,14 +16,14 @@ const checkToken = async (index = 0) => {
   const data = (await Key.find())[index];
 
   if (!data.cube) {
-    const token = await login();
-    await Key.create({ token, cube: [] });
+    const cube_token = await login();
+    await Key.create({ cube_token, cube: [] });
     return;
   }
 
   if (!data?.token) {
-    const token = await login();
-    await Key.updateOne({ _id: data._id }, { token });
+    const cube_token = await login();
+    await Key.updateOne({ _id: data._id }, { cube_token });
     return;
   }
 };
@@ -67,13 +67,13 @@ app.get('/get-key0', async (req, res) => {
     }
 
     if (key.cube.includes(promoCode.message)) {
-      const token = await login();
-      await Key.updateOne({ _id: key._id }, { token });
+      const cube_token = await login();
+      await Key.updateOne({ _id: key._id }, { cube_token });
       return res.status(200).send({ isOk: true });
     }
 
-    const token = await login();
-    await Key.updateOne({ _id: key._id }, { cube: [...key.cube, promoCode.message], token });
+    const cube_token = await login();
+    await Key.updateOne({ _id: key._id }, { cube: [...key.cube, promoCode.message], cube_token });
 
     return res.status(200).send({ isOk: true });
   } catch (error) {
@@ -86,20 +86,20 @@ app.get('/get-key1', async (req, res) => {
     await checkToken(1);
 
     const key = (await Key.find())[1];
-    const promoCode = await mainPromoCode(key?.token);
+    const promoCode = await mainPromoCode(key?.cube_token);
 
     if (!promoCode.isOk) {
       return res.status(200).send({ isOk: false, error: promoCode?.error });
     }
 
     if (key.cube.includes(promoCode.message)) {
-      const token = await login();
-      await Key.updateOne({ _id: key._id }, { token });
+      const cube_token = await login();
+      await Key.updateOne({ _id: key._id }, { cube_token });
       return res.status(200).send({ isOk: true });
     }
 
-    const token = await login();
-    await Key.updateOne({ _id: key._id }, { cube: [...key.cube, promoCode.message], token });
+    const cube_token = await login();
+    await Key.updateOne({ _id: key._id }, { cube: [...key.cube, promoCode.message], cube_token });
 
     await check100(1);
 

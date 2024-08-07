@@ -43,7 +43,7 @@ const getEvent = async (headers) => {
     };
 
     const response = await axios.post('https://api.gamepromo.io/promo/register-event', data, { headers });
-    console.log(data);
+    console.log(response.data);
 
     return response.data;
   } catch (error) {
